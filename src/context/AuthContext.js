@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }) => {
         } else {
           // Token expired or invalid
           localStorage.removeItem('artify_token');
+          setToken(null);
+          setUser(null);
         }
       }
       setLoading(false);
