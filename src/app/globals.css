@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF8F5; /* Warm sand light background */
+  --foreground: #1F2937; /* Dark charcoal text */
+}
+
+@theme {
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), sans-serif;
+
+  /* Organic Earthy Colors */
+  --color-clay-50: #fdfaf7;
+  --color-clay-100: #faf1e8;
+  --color-clay-200: #f3decb;
+  --color-clay-300: #e6be9f;
+  --color-clay-500: #d97706; /* Terracotta secondary */
+  --color-clay-600: #c2410c; /* Terracotta primary brand */
+  --color-clay-700: #9a3412;
+  --color-clay-800: #7c2d12;
+  --color-clay-900: #451a03;
+
+  --color-sand-50: #FAF8F5;
+  --color-sand-100: #F5EBE0;
+  --color-sand-200: #E3D5CA;
+  --color-sand-300: #D5BDAF;
+  --color-sand-400: #C5A880;
+
+  --color-sage-50: #F0FDF4;
+  --color-sage-100: #DCFCE7;
+  --color-sage-500: #16A34A; /* Accent green */
+  --color-sage-600: #15803D;
+  --color-sage-700: #166534;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #D5BDAF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c2410c;
+}
