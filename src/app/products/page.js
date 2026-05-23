@@ -8,7 +8,7 @@ import EarthyCard from '@/components/EarthyCard';
 import { apiRequest } from '@/utils/api';
 import { SlidersHorizontal, Search, Star, RefreshCw, X } from 'lucide-react';
 
-export default function ProductsPage() {
+function ProductsContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || '';
   const initialSearch = searchParams.get('search') || '';
@@ -223,3 +223,23 @@ export default function ProductsPage() {
     </div>
   );
 }
+
+export default function ProductsPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center bg-sand-50 py-20">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-clay-600 mx-auto"></div>
+            <p className="mt-4 text-xs font-semibold text-gray-500">Loading Handcrafted Gallery...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    }>
+      <ProductsContent />
+    </React.Suspense>
+  );
+}
+
