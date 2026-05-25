@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
           
           // Load notifications after user details
           fetchNotifications();
-        } else {
+        } else if (res.status === 401) {
           // Token expired or invalid
           localStorage.removeItem('artify_token');
           setToken(null);

@@ -7,7 +7,7 @@ import { useCart } from '@/context/CartContext';
 import { ShoppingCart, Bell, User, LogOut, Shield, Store, LayoutDashboard, Menu, X, Star } from 'lucide-react';
 
 export default function Navbar() {
-  const { user, logout, notifications, unreadCount, markNotificationRead } = useAuth();
+  const { user, loading, logout, notifications, unreadCount, markNotificationRead } = useAuth();
   const { cart } = useCart();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -101,7 +101,9 @@ export default function Navbar() {
             )}
 
             {/* Profile Dropdown */}
-            {user ? (
+            {loading ? (
+              <div className="h-7 w-7 rounded-full bg-sand-200 animate-pulse border border-sand-300" />
+            ) : user ? (
               <div className="relative">
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
@@ -198,7 +200,9 @@ export default function Navbar() {
             Browse Crafts
           </Link>
           
-          {user ? (
+          {loading ? (
+            <div className="h-8 bg-sand-200 animate-pulse rounded mt-2" />
+          ) : user ? (
             <>
               <Link
                 href={getDashboardLink()}

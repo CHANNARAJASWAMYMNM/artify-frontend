@@ -1,17 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import { Mail, Lock, User, Store, MapPin, Feather, Sparkles, ShieldAlert } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function RegisterPage() {
-  const { register } = useAuth();
+  const { register, user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [role, setRole] = useState('customer'); // 'customer' or 'seller'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (!authLoading && user) {
+      if (user.role === 'admin') {
+        router.push('/dashboard/admin');
+      } else if (user.role === 'seller') {
+        router.push('/dashboard/seller');
+      } else {
+        router.push('/dashboard/customer');
+      }
+    }
+  }, [user, authLoading, router]);
   
   // Seller specific states
   const [shopName, setShopName] = useState('');
